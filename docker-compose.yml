@@ -14,3 +14,14 @@ services:
       - "8000:8000"
     depends_on:
       - db
+  rails:
+    build:
+        context: .
+        dockerfile: Dockerfile.rails
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
